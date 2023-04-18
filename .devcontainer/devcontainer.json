@@ -1,0 +1,76 @@
+{
+  "name": "DevContainer for Azure Bicep",
+
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".",
+    "args": {
+      "VARIANT": "7.0"
+    }
+  },
+
+  "forwardPorts": [],
+
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:latest": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:latest": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:latest": {
+      "version": "lts",
+      "nodeGypDependencies": true,
+      "nvmInstallPath": "/usr/local/share/nvm"
+    },
+    "ghcr.io/devcontainers/features/common-utils:latest": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "vscode",
+      "uid": "1000",
+      "gid": "1000"
+    }
+  },
+  "overrideFeatureInstallOrder": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bierner.github-markdown-preview",
+        "cschleiden.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint",
+        "docsmsft.docs-linting",
+        "GitHub.copilot-labs",
+        "GitHub.copilot",
+        "GitHub.vscode-pull-request-github",
+        "ms-azuretools.vscode-bicep",
+        "ms-vscode.PowerShell",
+        "ms-vscode.vscode-node-azure-pack",
+        "yzhang.markdown-all-in-one"
+      ],
+
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font",
+        "editor.minimap.enabled": false,
+        "explorer.sortOrder": "type",
+        "explorer.fileNesting.enabled": true,
+        "explorer.fileNesting.patterns": {
+          "*.bicep": "${capture}.json, ${capture}.parameters.json"
+        }
+      }
+    }
+  },
+
+  "postCreateCommand": "/usr/bin/zsh ./.devcontainer/post-create.sh > ~/post-create.log",
+
+  "remoteUser": "vscode"
+}
