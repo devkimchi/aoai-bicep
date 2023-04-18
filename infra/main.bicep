@@ -13,6 +13,6 @@ module aoai './openAi.bicep' = {
   scope: rg
   params: {
     name: name
-    location: 'eastus'
+    location: 'southcentralus'
   }
 }
