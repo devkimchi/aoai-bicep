@@ -20,7 +20,14 @@ echo $AZURE_ENV_NAME
 azd auth login
 
 # Configure Azure Dev CLI
-azd init
+azd init -e $AZURE_ENV_NAME
+
+# Choose as many available locations as you want for Azure OpenAI Service. Currently available regions (as of September, 2023) are:
+# `australiaeast, canadaeast, eastus, eastus2, francecentral, japaneast, northcentralus, swedencentral, switzerlandnorth, uksouth, westeurope`
+AOAI_LOCATIONS="northcentralus"
+
+# Configure Azure OpenAI Service location
+azd env set AZURE_OPENAI_LOCATIONS $AOAI_LOCATIONS
 
 # Provision the AOAI instance
 azd up
