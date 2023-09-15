@@ -7,7 +7,7 @@ var openai = {
   skuName: 'S0'
   models: [
     {
-      name: 'gpt-35-turbo'
+      name: 'gpt-35-turbo-16k'
       deploymentName: 'model-gpt35turbo16k'
       version: '0613'
       skuName: 'Standard'
